@@ -2,13 +2,15 @@
 
 ## Contributors
 
-Thanks goes to these wonderful people:
+Thanks goes to these back end people:
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
 <table>
 
-<tr><td align="center"><a href="https://github.com/djho57"><img src="https://avatars.githubusercontent.com/u/88899732?v=4" width="90px;" alt="Daniel Ho"/><br /><sub><b>Daniel Ho</b></sub></a>
+<tr>
+<td align="center"><a href="https://github.com/djho57"><img src="https://avatars.githubusercontent.com/u/88899732?v=4" width="90px;" alt="Daniel Ho"/><br /><sub><b>Daniel Ho</b></sub></a>
+</tr>
 
 <td align="center"><a href="https://github.com/PriscilaMonteiro "><img src="https://avatars.githubusercontent.com/u/77358128?v=4" width="90px;" alt="Priscila Monteiro"/><br /><sub><b>Priscila Monteiro</b></sub></a><br />
 
