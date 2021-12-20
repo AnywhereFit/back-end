@@ -1,5 +1,9 @@
 # Fitness Anywhere Back End
 
+## Heroku git URL:
+
+https://git.heroku.com/fitanywhere.git
+
 ## Contributors
 
 Thanks goes to these back end people:
