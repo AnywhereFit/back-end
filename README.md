@@ -4,6 +4,14 @@
 
 https://git.heroku.com/fitanywhere.git
 
+config Vars:
+
+key
+DATABASE_URL
+
+Value
+postgres://ozgwizalemmwil:27783cef200290ba02943c4970b264176a8a906a304eb736038b9ed49cdc6072@ec2-3-232-160-153.compute-1.amazonaws.com:5432/d31l51nccmpbur
+
 ## Contributors
 
 Thanks goes to these back end people:
