@@ -10,7 +10,7 @@ key
 DATABASE_URL
 
 Value
-postgres://ozgwizalemmwil:27783cef200290ba02943c4970b264176a8a906a304eb736038b9ed49cdc6072@ec2-3-232-160-153.compute-1.amazonaws.com:5432/d31l51nccmpbur
+postgres://luhpcmpnmnrjbq:447620f131aea7135940123403c4e8c3e584d4e6397d53bcaff2182a09b3e146@ec2-52-70-205-234.compute-1.amazonaws.com:5432/d5a5jt3qfmj0ea
 
 ## Contributors
 
