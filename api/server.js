@@ -1,22 +1,23 @@
 const express = require("express");
-const helmet = require("helmet");
 const cors = require("cors");
-// const classesRouter = require("./classes/classes-router");
-const usersRouter = require("./users/auth-router");
+const helmet = require("helmet");
+
+const authRouter = require("../api/auth/auth-router");
+const usersRouter = require("../api/users/user-router");
+const classesRouter = require("../api/classes/classes-router");
 
 const server = express();
-server.use(express.json());
+
 server.use(helmet());
+server.use(express.json());
 server.use(cors());
 
-// server.use("/api/classes", classesRouter);
+server.use("/api/auth", authRouter);
 server.use("/api/users", usersRouter);
+server.use("/api/classes", classesRouter);
 
-server.get("/", async (req, res) => {
-  res.json("Welcome to Fitness Everywhere App");
-});
-server.get("/api", async (req, res) => {
-  res.json("api is up");
+server.get("/", (req, res) => {
+  res.json("Api is up - Testing again!");
 });
 
 // eslint-disable-next-line no-unused-vars
