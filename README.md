@@ -4,16 +4,16 @@
 
 https://fitanywhere.herokuapp.com/
 
-[POST] /api/auth/register ( Creates a user using the information sent inside the `request body` )
-[POST] /api/auth/login
-[GET] /api/users (TOKEN REQUIRED - RESTRICTED - only users with a valid token can access)
-[GET] /api/user/:user_id (TOKEN REQUIRED - RESTRICTED)
-[GET] /api/classes (TOKEN REQUIRED - RESTRICTED)
-[GET] /api/classes/:class_id (TOKEN REQUIRED - RESTRICTED)
-[PUT] /api/classes/:class_id | Updates the class with the specified `id` using data from the `request body`. Returns the modified class
-[DELETE] /api/classes/:class_id | Removes the class with the specified `id` using data from the `request body`. Returns the deleted class
-[GET] /api/classes/:user_id/attending (TOKEN REQUIRED - RESTRICTED)
-[GET] /api/classes/:user_id/instructing (TOKEN REQUIRED - RESTRICTED)
+[POST] /api/auth/register ( Creates a user using the information sent inside the `request body` ) </br>
+[POST] /api/auth/login </br>
+[GET] /api/users (TOKEN REQUIRED - RESTRICTED - only users with a valid token can access) </br>
+[GET] /api/user/:user_id (TOKEN REQUIRED - RESTRICTED) </br>
+[GET] /api/classes (TOKEN REQUIRED - RESTRICTED) </br>
+[GET] /api/classes/:class_id (TOKEN REQUIRED - RESTRICTED) </br>
+[PUT] /api/classes/:class_id | Updates the class with the specified `id` using data from the `request body`. Returns the modified class </br>
+[DELETE] /api/classes/:class_id | Removes the class with the specified `id` using data from the `request body`. Returns the deleted class </br>
+[GET] /api/classes/:user_id/attending (TOKEN REQUIRED - RESTRICTED) </br>
+[GET] /api/classes/:user_id/instructing (TOKEN REQUIRED - RESTRICTED) </br>
 
 Authentication will be implemented using JSON Web Tokens.
 
