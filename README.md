@@ -4,6 +4,8 @@
 
 https://git.heroku.com/fitanywhere.git
 
+https://fitanywhere.herokuapp.com/
+
 config Vars:
 
 key
