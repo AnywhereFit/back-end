@@ -23,9 +23,15 @@ server.use("/api/auth", authRouter);
 //   res.status(201).json(await insertUser(req.body))
 // })
 
-server.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client", "index.html"));
-});
+// server.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../client", "index.html"));
+// });
+server.get('/', async (req, res) => {
+  res.json('Server up')
+
+server.get('/api', async (req,res) => {
+  res.json("message from api")
+})
 
 // eslint-disable-next-line no-unused-vars
 server.use((err, req, res, next) => {

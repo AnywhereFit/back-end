@@ -2,9 +2,219 @@
 
 ## Heroku git URL:
 
-https://git.heroku.com/fitanywhere.git
-
 https://fitanywhere.herokuapp.com/
+
+| Method | URL                | Description                                                          |
+| ------ | ------------------ | -------------------------------------------------------------------- | ------------ |
+| POST   | /api/auth/register | Creates a user using the information sent inside the `request body`. | NOT DONE YET |
+| POST   | /api/auth/login    | Creates a user using the information sent inside the `request body`. | NOT DONE YET |
+
+| POST | /api/users | Creates a user using the information sent inside the `request body`. |NOT DONE YET
+| GET | /api/users | Returns an array users. (Restrited - Valid Token is required ) |NOT DONE YET
+| GET | /api/users/:id | Returns the user object with the specified `id`. |NOT DONE YET
+| DELETE | /api/users/:id | Removes the user with the specified `id` and returns the deleted user.|NOT DONE YET
+| PUT | /api/users/:id | Updates the user with the specified `id` using data from the |NOT DONE YET
+`request body`. Returns the modified user |
+|----------------------------------------------------------------------------------------------------- |
+
+USER endpoints:
+
+to register a new user account requires the following:
+
+[POST] /api/auth/register
+
+[1] username
+[2] password
+[3] role
+
+to sign in/login into account requires the following:
+
+[1] username
+[2] password
+
+How to use it on Postman:
+
+https://fitanywhere.herokuapp.com/api/auth/register example : on postman => Select Body - chose raw and change where it said text to JSON
+
+{
+"username":"Priscila",
+"role": "instructor",
+"password":"1234"
+}
+a successful response will look like this :
+{
+"username": "Priscila"
+}
+
+to sign in to the created account use [POST] method to the following address
+https://fitanywhere.herokuapp.com/api/auth/login
+a successful response will send back a token and response will look like the following:
+
+{
+"message": "welcome Joe ",
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6Imhlcm9rdXRlc3QiLCJwYXNzd29yZCI6IiQyYSQwOCRFLjMwLzdUSjY3RmZUZmFhNTNUL2kudmJ0ZktsVnlESDhIY01ua2ZGMlRWeURES0wxeDRFSyIsImlhdCI6MTYzNzExNTUxNCwiZXhwIjoxNjM3MjAxOTE0fQ.2V8KVc5o6yTc-0cVkNRGwebdg4Nk6ejxbIUPGWMUQxg"
+}
+
+[GET] /api/users (TOKEN REQUIRED - RESTRICTED)
+
+[
+{
+"user_id": 1,
+"username": "Priscila",
+"password": "hashedpassword",
+"role_type": "instructor",
+"created_at": "",
+"updated_at": ""
+},
+{
+"user_id": 2,
+"username": "Andrew",
+"password": "hashedpassword",
+"role_type": "client",
+"created_at": "",
+"updated_at": ""
+}
+]
+
+[GET] /api/user/:user_id (TOKEN REQUIRED - RESTRICTED)
+
+{
+"user_id": 1,
+"username": "Priscila",
+"password": "hashedpassword",
+"role_type": "instructor",
+"created_at": "",
+"updated_at": ""
+}
+
+CLASSES ENDPOINTS:
+
+[GET] /api/classes (TOKEN REQUIRED - RESTRICTED)
+
+[
+{
+"class_id": 1,
+"class_name": "Ashtanga Yoga",
+"class_duration": "45 min",
+"max_class_size": 10,
+"class_date": "...",
+"start_time": "10:00:00",
+"class_location": "La Jolla",
+"class_type": "Yoga",
+"class_intensity": "Beginner",
+"class_instructor": 1
+},
+{
+"class_id": 2,
+"class_name": "Swimming for beginners",
+"class_duration": "1 hour",
+"max_class_size": 12,
+"class_date": "...",
+"start_time": "12:30:00",
+"class_location": "PIER 42 - Pacific Beach",
+"class_type": "swimming",
+"class_intensity": "Beginner",
+"class_instructor": 2
+},
+{
+"class_id": 3,
+"class_name": "Hot Yoga",
+"class_duration": "1 hour",
+"max_class_size": 25,
+"class_date": "...",
+"start_time": "07:00:00",
+"class_location": "Body Fit Gym",
+"class_type": "Yoga",
+"class_intensity": "Advanced",
+"class_instructor": 1
+}
+]
+
+[GET] /api/classes/:class_id (TOKEN REQUIRED - RESTRICTED)
+
+Will return:
+
+{
+"class_id": 1,
+"class_name": "Hot Yoga",
+"class_duration": "1 hour",
+"max_class_size": 25,
+"class_date": "...",
+"start_time": "07:00:00",
+"class_location": "Body Fit Gym",
+"class_type": "Yoga",
+"class_intensity": "Advanced",
+"class_instructor": 1
+}
+
+[GET] /api/classes/:user_id/attending (TOKEN REQUIRED - RESTRICTED)
+
+A specific user can get all classes that will attend.
+
+[
+{
+"user_id": 2,
+"username": "Andrew",
+"class_id": 1,
+"class_name": "Hot Yoga",
+"class_duration": "1 hour",
+"max_class_size": 25,
+"class_date": "...",
+"start_time": "07:00:00",
+"class_location": "Body Fit Gym",
+"class_type": "Yoga",
+"class_intensity": "Advanced",
+"class_instructor": 1
+},
+{
+"user_id": 2,
+"username": "Andrew",
+"class_id": 1,
+"class_name": "Ashtanga Yoga",
+"class_duration": "45 min",
+"max_class_size": 10,
+"class_date": "...",
+"start_time": "10:00:00",
+"class_location": "La Jolla",
+"class_type": "Yoga",
+"class_intensity": "Beginner",
+"class_instructor": 1
+}
+]
+
+[GET] /api/classes/:user_id/instructing (TOKEN REQUIRED - RESTRICTED)
+
+A specific instructor can get all classes that will instruct.
+
+[
+{
+"username": "Priscila"
+"class_id": 1,
+"class_name": "Ashtanga Yoga",
+"class_duration": "45 min",
+"max_class_size": 10,
+"class_date": "...",
+"start_time": "10:00:00",
+"class_location": "La Jolla",
+"class_type": "Yoga",
+"class_intensity": "Beginner",
+"class_instructor": 1
+"number_registered": 10
+},
+{
+"class_id": 3,
+"class_name": "Hot Yoga",
+"class_duration": "1 hour",
+"max_class_size": 25,
+"class_date": "...",
+"start_time": "07:00:00",
+"class_location": "Body Fit Gym",
+"class_type": "Yoga",
+"class_intensity": "Advanced",
+"class_instructor": 1
+"number_registered": 20
+}
+]
 
 config Vars:
 
