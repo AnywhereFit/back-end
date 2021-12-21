@@ -62,7 +62,7 @@ a successful response will send back a token and response will look like the fol
 "user_id": 1,
 "username": "Priscila",
 "password": "hashedpassword",
-"role_type": "instructor",
+"role_name": "instructor",
 "created_at": "",
 "updated_at": ""
 },

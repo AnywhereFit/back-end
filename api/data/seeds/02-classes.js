@@ -1,0 +1,48 @@
+exports.seed = function (knex, Promise) {
+  return knex("classes").insert([
+    {
+      class_name: "Ashtanga Yoga",
+      class_duration: "45 min",
+      max_attendees: 10,
+      class_date: "2021-12-28",
+      start_time: "10:00:00",
+      class_location: "La Jolla Rec Center",
+      class_instructor: 1,
+      class_intensity_level: "Beginner",
+      class_type: "Yoga",
+    },
+    {
+      class_name: "Swimming for beginners",
+      class_duration: "45 min",
+      max_attendees: 10,
+      class_date: "2021-12-28",
+      start_time: "10:00:00",
+      class_location: "PIER 42 - Pacific Beach",
+      class_instructor: 2,
+      class_intensity_level: "Beginner",
+      class_type: "swimming",
+    },
+    {
+      class_name: "Hot Yoga",
+      class_duration: "45 min",
+      max_attendees: 10,
+      class_date: "2021-12-28",
+      start_time: "16:00:00",
+      class_location: "Body Fit Gym",
+      class_instructor: 1,
+      class_intensity_level: "Advanced",
+      class_type: "Yoga",
+    },
+    {
+      class_name: "Jiu-Jitsu",
+      class_duration: "45 min",
+      max_attendees: 10,
+      class_date: "2021-12-28",
+      start_time: "10:00:00",
+      class_location: "Fight Club",
+      class_instructor: 3,
+      class_intensity_level: "Beginner",
+      class_type: "Fight",
+    },
+  ]);
+};
