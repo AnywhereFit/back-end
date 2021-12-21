@@ -4,18 +4,18 @@
 
 https://fitanywhere.herokuapp.com/
 
-| Method | URL                | Description                                                          |
-| ------ | ------------------ | -------------------------------------------------------------------- | ------------ |
-| POST   | /api/auth/register | Creates a user using the information sent inside the `request body`. | NOT DONE YET |
-| POST   | /api/auth/login    | Creates a user using the information sent inside the `request body`. | NOT DONE YET |
+[POST] /api/auth/register ( Creates a user using the information sent inside the `request body` )
+[POST] /api/auth/login
+[GET] /api/users (TOKEN REQUIRED - RESTRICTED - only users with a valid token can access)
+[GET] /api/user/:user_id (TOKEN REQUIRED - RESTRICTED)
+[GET] /api/classes (TOKEN REQUIRED - RESTRICTED)
+[GET] /api/classes/:class_id (TOKEN REQUIRED - RESTRICTED)
+[PUT] /api/classes/:class_id | Updates the class with the specified `id` using data from the `request body`. Returns the modified class
+[DELETE] /api/classes/:class_id | Removes the class with the specified `id` using data from the `request body`. Returns the deleted class
+[GET] /api/classes/:user_id/attending (TOKEN REQUIRED - RESTRICTED)
+[GET] /api/classes/:user_id/instructing (TOKEN REQUIRED - RESTRICTED)
 
-| POST | /api/users | Creates a user using the information sent inside the `request body`. |NOT DONE YET
-| GET | /api/users | Returns an array users. (Restrited - Valid Token is required ) |NOT DONE YET
-| GET | /api/users/:id | Returns the user object with the specified `id`. |NOT DONE YET
-| DELETE | /api/users/:id | Removes the user with the specified `id` and returns the deleted user.|NOT DONE YET
-| PUT | /api/users/:id | Updates the user with the specified `id` using data from the |NOT DONE YET
-`request body`. Returns the modified user |
-|----------------------------------------------------------------------------------------------------- |
+Authentication will be implemented using JSON Web Tokens.
 
 USER endpoints:
 
