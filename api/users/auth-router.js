@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const tokenBuilder = require("./token-builder");
-const User = require("../users/users-model");
+const User = require("./users-model");
 
 const {
   validUserBody,

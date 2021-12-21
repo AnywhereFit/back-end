@@ -1,5 +1,5 @@
-const User = require("../users/users-model");
-const { findBy } = require("../users/users-model");
+const User = require("./users-model");
+const { findBy } = require("./users-model");
 
 function validUserBody(req, res, next) {
   const { username, password } = req.body;
