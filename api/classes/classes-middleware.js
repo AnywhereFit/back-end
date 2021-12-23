@@ -5,19 +5,24 @@ exports.checkAccountPayload = (req, res, next) => {
   const error = { status: 400 };
   const {
     class_name,
+    class_duration,
     class_type,
     start_time,
     class_intensity_level,
     class_location,
     // number_registered,
     max_attendees,
+    class_instructor,
   } = req.body;
   if (
+    class_duration === undefined ||
     class_name === undefined ||
     start_time === undefined ||
+    class_instructor === undefined ||
     class_intensity_level === undefined
   ) {
-    error.message = "name start_time intensity_level are required";
+    error.message =
+      "duration, class_name, start_time intensity_level are required";
     next(error);
   }
   if (
@@ -26,8 +31,7 @@ exports.checkAccountPayload = (req, res, next) => {
     // number_registered === undefined ||
     max_attendees === undefined
   ) {
-    error.message =
-      "type location number_registered and max_class_size are required";
+    error.message = "type location and max_attendees are required";
     next(error);
   } else if (typeof class_name !== "string") {
     error.message = "name of classes must be a string";

@@ -33,28 +33,39 @@ router.get("/:id", restricted, checkAccountId, async (req, res, next) => {
 //   }
 // });
 
-router.post(
-  "/",
-  restricted,
-  checkAccountPayload,
-  checkAccountNameUnique,
-  async (req, res, next) => {
-    try {
-      const newClasses = await Classes.create({
-        class_name: req.body.class_name.trim(),
-        class_type: req.body.class_type,
-        start_time: req.body.start_time,
-        class_intensity_level: req.body.class_intensity_level,
-        class_location: req.body.class_location,
-        // number_registered: req.body.number_registered,
-        max_attendees: req.body.max_attendees,
-      });
-      res.status(201).json(newClasses);
-    } catch (err) {
-      next(err);
-    }
+router.post("/", async (req, res, next) => {
+  try {
+    const newClass = await Classes.create(req.body);
+    res.status(201).json(newClass);
+  } catch (err) {
+    next(err);
   }
-);
+});
+
+// router.post(
+//   "/",
+//   restricted,
+//   checkAccountPayload,
+//   checkAccountNameUnique,
+//   async (req, res, next) => {
+//     try {
+//       const newClasses = await Classes.create({
+//         class_name: req.body.class_name.trim(),
+//         class_duration: req.body.class_duration,
+//         class_type: req.body.class_type,
+//         start_time: req.body.start_time,
+//         class_intensity_level: req.body.class_intensity_level,
+//         class_location: req.body.class_location,
+//         // number_registered: req.body.number_registered,
+//         max_attendees: req.body.max_attendees,
+//         class_instructor: req.body.class_instructor,
+//       });
+//       res.status(201).json(newClasses);
+//     } catch (err) {
+//       next(err);
+//     }
+//   }
+// );
 
 router.put(
   "/:id",
