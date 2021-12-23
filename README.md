@@ -10,16 +10,17 @@ https://fitanywhere.herokuapp.com/
 [GET] /api/user/:user_id (TOKEN REQUIRED - RESTRICTED) </br>
 [GET] /api/classes (TOKEN REQUIRED - RESTRICTED) </br>
 [GET] /api/classes/:class_id (TOKEN REQUIRED - RESTRICTED) </br>
-[PUT] /api/classes/:class_id | Updates the class with the specified `id` using data from the `request body`. Returns the modified class </br>
-[DELETE] /api/classes/:class_id | Removes the class with the specified `id` using data from the `request body`. Returns the deleted class </br>
-[GET] /api/classes/:user_id/attending (TOKEN REQUIRED - RESTRICTED) </br>
-[GET] /api/classes/:user_id/instructing (TOKEN REQUIRED - RESTRICTED) </br>
+
+<!-- [PUT] /api/classes/:class_id | Updates the class with the specified `id` using data from the `request body`. Returns the modified class </br> -->
+<!-- [DELETE] /api/classes/:class_id | Removes the class with the specified `id` using data from the `request body`. Returns the deleted class </br> -->
+<!-- [GET] /api/classes/:user_id/attending (TOKEN REQUIRED - RESTRICTED) </br> -->
+<!-- [GET] /api/classes/:user_id/instructing (TOKEN REQUIRED - RESTRICTED) </br> -->
 
 Authentication will be implemented using JSON Web Tokens.
 
 ENDPOINTS:
 
----------------------------REGISTER-----------------------------------------
+---------------------------REGISTER-----------------------------------------</br>
 To register a new user account requires the following:
 
 [POST] https://fitanywhere.herokuapp.com/api/auth/register
@@ -42,7 +43,7 @@ On postman => Select Body - chose raw and change where it said text to JSON
 "role_id": 1
 }
 
----------------------------LOGIN--------------------------------------------
+---------------------------LOGIN--------------------------------------------</br>
 
 To Login to the created account use the following:
 
@@ -66,7 +67,7 @@ On postman => Select Body - chose raw and change where it said text to JSON
 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxOSwidXNlcm5hbWUiOiJKb2huIERvZSIsImlhdCI6MTY0MDI4MzYzMiwiZXhwIjoxNjQwMzcwMDMyfQ.SJ9SzMUSmWlKrKxtrCRxybI0Hae34ZRIzVHrlng7gj4"
 }
 
----------------------------GET ALL USERS -----------------------------------------
+---------------------------GET ALL USERS -----------------------------------------</br>
 To Get all users use the following:
 
 [GET] https://fitanywhere.herokuapp.com/api/users (TOKEN REQUIRED - RESTRICTED)
@@ -119,7 +120,7 @@ And Headers :
 }
 ]
 
----------------------------GET USER BY ID -----------------------------------------
+---------------------------GET USER BY ID -----------------------------------------</br>
 To Get a specific user do the following:
 
 [GET] https://fitanywhere.herokuapp.com/api/users/1 (TOKEN REQUIRED - RESTRICTED)
@@ -152,64 +153,107 @@ And Headers :
 
 CLASSES ENDPOINTS:
 
-[GET] /api/classes (TOKEN REQUIRED - RESTRICTED)
+---------------------------GET ALL CLASSES -----------------------------------------</br>
+To Get all users use the following:
+
+[GET] https://fitanywhere.herokuapp.com/api/classes (TOKEN REQUIRED - RESTRICTED)
+
+To 'get all classes' requires the following:
+
+[1] TOKEN (🚨 Tokens are valid for 1 day)
+
+📝 EXAMPLE
+
+On postman => Select Body - None
+And Headers :
+[1] At KEY put: Authorization
+[2] At VALUE put the token without quotes: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxOSwidXNlcm5hbWUiOiJKb2huIERvZSIsImlhdCI6MTY0MDI4MzYzMiwiZXhwIjoxNjQwMzcwMDMyfQ.SJ9SzMUSmWlKrKxtrCRxybI0Hae34ZRIzVHrlng7gj4
+
+✅ a successful response will look like the following:
 
 [
 {
 "class_id": 1,
 "class_name": "Ashtanga Yoga",
 "class_duration": "45 min",
-"max_class_size": 10,
-"class_date": "...",
+"max_attendees": 10,
+"class_date": "2021-12-28T00:00:00.000Z",
 "start_time": "10:00:00",
-"class_location": "La Jolla",
+"class_location": "La Jolla Rec Center",
 "class_type": "Yoga",
-"class_intensity": "Beginner",
+"class_intensity_level": "Beginner",
 "class_instructor": 1
 },
 {
 "class_id": 2,
 "class_name": "Swimming for beginners",
-"class_duration": "1 hour",
-"max_class_size": 12,
-"class_date": "...",
-"start_time": "12:30:00",
+"class_duration": "45 min",
+"max_attendees": 10,
+"class_date": "2021-12-28T00:00:00.000Z",
+"start_time": "10:00:00",
 "class_location": "PIER 42 - Pacific Beach",
 "class_type": "swimming",
-"class_intensity": "Beginner",
+"class_intensity_level": "Beginner",
 "class_instructor": 2
 },
 {
 "class_id": 3,
 "class_name": "Hot Yoga",
-"class_duration": "1 hour",
-"max_class_size": 25,
-"class_date": "...",
-"start_time": "07:00:00",
+"class_duration": "45 min",
+"max_attendees": 10,
+"class_date": "2021-12-28T00:00:00.000Z",
+"start_time": "16:00:00",
 "class_location": "Body Fit Gym",
 "class_type": "Yoga",
-"class_intensity": "Advanced",
+"class_intensity_level": "Advanced",
 "class_instructor": 1
+},
+{
+"class_id": 4,
+"class_name": "Jiu-Jitsu",
+"class_duration": "45 min",
+"max_attendees": 10,
+"class_date": "2021-12-28T00:00:00.000Z",
+"start_time": "10:00:00",
+"class_location": "Fight Club",
+"class_type": "Fight",
+"class_intensity_level": "Beginner",
+"class_instructor": 3
 }
 ]
 
-[GET] /api/classes/:class_id (TOKEN REQUIRED - RESTRICTED)
+---------------------------GET A CLASS BY ID -----------------------------------------</br>
+To Get an specific class by Id use the following:
 
-Will return:
+[GET] https://fitanywhere.herokuapp.com/api/classes/1 (TOKEN REQUIRED - RESTRICTED)
+
+To 'get a class by id' requires the following:
+
+[1] TOKEN (🚨 Tokens are valid for 1 day)
+
+📝 EXAMPLE
+
+On postman => Select Body - None
+And Headers :
+[1] At KEY put: Authorization
+[2] At VALUE put the token without quotes: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxOSwidXNlcm5hbWUiOiJKb2huIERvZSIsImlhdCI6MTY0MDI4MzYzMiwiZXhwIjoxNjQwMzcwMDMyfQ.SJ9SzMUSmWlKrKxtrCRxybI0Hae34ZRIzVHrlng7gj4
+
+✅ a successful response will look like the following:
 
 {
 "class_id": 1,
-"class_name": "Hot Yoga",
-"class_duration": "1 hour",
-"max_class_size": 25,
-"class_date": "...",
-"start_time": "07:00:00",
-"class_location": "Body Fit Gym",
+"class_name": "Ashtanga Yoga",
+"class_duration": "45 min",
+"max_attendees": 10,
+"class_date": "2021-12-28T00:00:00.000Z",
+"start_time": "10:00:00",
+"class_location": "La Jolla Rec Center",
 "class_type": "Yoga",
-"class_intensity": "Advanced",
+"class_intensity_level": "Beginner",
 "class_instructor": 1
 }
 
+From now on is not done yet ...
 [GET] /api/classes/:user_id/attending (TOKEN REQUIRED - RESTRICTED)
 
 A specific user can get all classes that will attend.
