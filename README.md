@@ -17,75 +17,138 @@ https://fitanywhere.herokuapp.com/
 
 Authentication will be implemented using JSON Web Tokens.
 
-USER endpoints:
+ENDPOINTS:
 
-to register a new user account requires the following:
+---------------------------REGISTER-----------------------------------------
+To register a new user account requires the following:
 
-[POST] /api/auth/register
+[POST] https://fitanywhere.herokuapp.com/api/auth/register
 
 [1] username
 [2] password
-[3] role
+[3] role - only two options: client or instructor
+
+📝 EXAMPLE
+
+On postman => Select Body - chose raw and change where it said text to JSON
+
+{ "username": "John Doe", "password":"1234", "role_name":"client"}
+
+✅ a successful response will look like this :
+
+{
+"username": "John Doe",
+"password": "$2a$08$mkxnplwHxlt7tP/ahUBEjuZcJc4FERyICWIAa9moedKbrdsA2GHKS",
+"role_id": 1
+}
+
+---------------------------LOGIN--------------------------------------------
+
+To Login to the created account use the following:
+
+[POST] https://fitanywhere.herokuapp.com/api/auth/login
 
 to sign in/login into account requires the following:
 
 [1] username
 [2] password
 
-How to use it on Postman:
+📝 EXAMPLE
 
-https://fitanywhere.herokuapp.com/api/auth/register example : on postman => Select Body - chose raw and change where it said text to JSON
+On postman => Select Body - chose raw and change where it said text to JSON
 
-{
-"username":"Priscila",
-"role": "instructor",
-"password":"1234"
-}
-a successful response will look like this :
-{
-"username": "Priscila"
-}
+{ "username": "John Doe", "password":"1234"}
 
-to sign in to the created account use [POST] method to the following address
-https://fitanywhere.herokuapp.com/api/auth/login
-a successful response will send back a token and response will look like the following:
+✅ a successful response will send back a token and response will look like the following:
 
 {
-"message": "welcome Joe ",
-"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6Imhlcm9rdXRlc3QiLCJwYXNzd29yZCI6IiQyYSQwOCRFLjMwLzdUSjY3RmZUZmFhNTNUL2kudmJ0ZktsVnlESDhIY01ua2ZGMlRWeURES0wxeDRFSyIsImlhdCI6MTYzNzExNTUxNCwiZXhwIjoxNjM3MjAxOTE0fQ.2V8KVc5o6yTc-0cVkNRGwebdg4Nk6ejxbIUPGWMUQxg"
+"message": "welcome back John Doe",
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxOSwidXNlcm5hbWUiOiJKb2huIERvZSIsImlhdCI6MTY0MDI4MzYzMiwiZXhwIjoxNjQwMzcwMDMyfQ.SJ9SzMUSmWlKrKxtrCRxybI0Hae34ZRIzVHrlng7gj4"
 }
 
-[GET] /api/users (TOKEN REQUIRED - RESTRICTED)
+---------------------------GET ALL USERS -----------------------------------------
+To Get all users use the following:
+
+[GET] https://fitanywhere.herokuapp.com/api/users (TOKEN REQUIRED - RESTRICTED)
+
+To 'get all users' requires the following:
+
+[1] TOKEN (🚨 Tokens are valid for 1 day)
+
+📝 EXAMPLE
+
+On postman => Select Body - None
+And Headers :
+[1] At KEY put: Authorization
+[2] At VALUE put the token without quotes: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxOSwidXNlcm5hbWUiOiJKb2huIERvZSIsImlhdCI6MTY0MDI4MzYzMiwiZXhwIjoxNjQwMzcwMDMyfQ.SJ9SzMUSmWlKrKxtrCRxybI0Hae34ZRIzVHrlng7gj4
+
+✅ a successful response will look like the following:
 
 [
 {
 "user_id": 1,
 "username": "Priscila",
-"password": "hashedpassword",
-"role_name": "instructor",
-"created_at": "",
-"updated_at": ""
+"password": "$2a$10$dFwWjD8hi8K2I9/Y65MWi.WU0qn9eAVaiBoRSShTvuJVGw8XpsCiq",
+"role_id": 1,
+"created_at": "2021-12-21T21:06:25.112Z",
+"updated_at": "2021-12-21T21:06:25.112Z"
 },
 {
-"user_id": 2,
-"username": "Andrew",
-"password": "hashedpassword",
-"role_type": "client",
-"created_at": "",
-"updated_at": ""
+"user_id": 16,
+"username": "andrew",
+"password": "$2a$08$gqowDYMRfsBcaIojbrMphOrsQluGiSaDS6zrVPr9I21eNKwvDj7Zi",
+"role_id": 1,
+"created_at": "2021-12-22T21:02:31.412Z",
+"updated_at": "2021-12-22T21:02:31.412Z"
+},
+{
+"user_id": 18,
+"username": "luis",
+"password": "$2a$08$RdP7uTcZF49dUGsHtpq2/euabR8bMGIyCU.QZwlYYgPI1AI2gSQ9q",
+"role_id": 2,
+"created_at": "2021-12-23T00:12:57.461Z",
+"updated_at": "2021-12-23T00:12:57.461Z"
+},
+{
+"user_id": 19,
+"username": "John Doe",
+"password": "$2a$08$mkxnplwHxlt7tP/ahUBEjuZcJc4FERyICWIAa9moedKbrdsA2GHKS",
+"role_id": 1,
+"created_at": "2021-12-23T18:17:26.207Z",
+"updated_at": "2021-12-23T18:17:26.207Z"
 }
 ]
 
-[GET] /api/user/:user_id (TOKEN REQUIRED - RESTRICTED)
+---------------------------GET USER BY ID -----------------------------------------
+To Get a specific user do the following:
 
+[GET] https://fitanywhere.herokuapp.com/api/users/1 (TOKEN REQUIRED - RESTRICTED)
+
+To 'get user by Id' requires the following:
+
+[1] TOKEN (🚨 Tokens are valid for 1 day)
+
+📝 EXAMPLE
+
+On postman => Select Body - None
+And Headers :
+[1] At KEY put: Authorization
+[2] At VALUE put the token without quotes: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxOSwidXNlcm5hbWUiOiJKb2huIERvZSIsImlhdCI6MTY0MDI4MzYzMiwiZXhwIjoxNjQwMzcwMDMyfQ.SJ9SzMUSmWlKrKxtrCRxybI0Hae34ZRIzVHrlng7gj4
+
+✅ a successful response will look like the following:
+
+[
 {
 "user_id": 1,
 "username": "Priscila",
-"password": "hashedpassword",
-"role_type": "instructor",
-"created_at": "",
-"updated_at": ""
+"password": "$2a$10$dFwWjD8hi8K2I9/Y65MWi.WU0qn9eAVaiBoRSShTvuJVGw8XpsCiq",
+"role_id": 1,
+"created_at": "2021-12-21T21:06:25.112Z",
+"updated_at": "2021-12-21T21:06:25.112Z"
 }
+]
+
+---
 
 CLASSES ENDPOINTS:
 

@@ -24,6 +24,15 @@ router.get("/:id", restricted, checkAccountId, async (req, res, next) => {
   }
 });
 
+// router.get("/:user_id/attending", restricted, async (req, res, next) => {
+//   try {
+//     const classes = await Classes.getClientClasses(req.params.user_id);
+//     res.status(200).json(classes);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
 router.post(
   "/",
   restricted,
